@@ -1,0 +1,154 @@
+<!--    填写收货人信息-->
+    <script id="W_add_address" type="text/x-handlebars-template">
+      <div class="add_address_con">
+        <div class="add_info clearfix"><p class="address_msg p_basic add_name fl"><span class="p_txt">(收货人)</span>
+          <input type="text" class="p_msg" id="p_name" placeholder="必填"> <em class="error_tips h">请填写收货人姓名</em></p>
+          <p class="address_msg p_basic add_phone fl"><span class="p_txt">(手机号)</span> <input type="text" class="p_msg"
+                                                                                              id="p_phone"
+                                                                                              placeholder="必填"
+                                                                                              maxlength="11"
+                                                                                              onchange="wbiao.confirm.checkPhone(this);">
+            <em class="error_tips p_err01 h">请填写手机号</em> <em class="error_tips p_err02 h"><span class="ico"><img
+                    src="//static.wbiao.co/p/pc/images/1/icon-a-error-hyaline.png" alt=""></span> <span class="txt">手机号格式不正确</span></em>
+          </p></div>
+        <p class="address_msg"><span class="p_txt">(所在地区)</span> <select name="province_id" id="province_id"
+                                                                         class="add_area"
+                                                                         onchange="wbiao.confirm.selectArea(this);"></select>
+          <select name="city_id" id="city_id" class="add_area h" onchange="wbiao.confirm.selectArea(this);"></select>
+          <select name="area_id" id="area_id" class="add_area h" onchange="wbiao.confirm.selectArea(this);"></select>
+        </p>
+        <p class="address_msg p_basic add_street"><span class="p_txt">(详细地址)</span> <input type="text" class="p_msg"
+                                                                                           id="p_street"
+                                                                                           placeholder="街道门牌"> <em
+                class="error_tips h">请填写详细地址</em></p>
+        <p class="address_msg set_default"><span class="default_btn" isDefault="false"
+                                                 onclick="wbiao.confirm.setDefaultAdd(this);"><i></i></span> 设为默认</p>
+      </div></script>
+<!--    填写发票信息-->
+    <script id="W_invoice_type" type="text/x-handlebars-template">
+      <div class="W_invoice_content" img-env="image8.wbiao.co">
+        <ul class="invoice_tab clearfix">
+          <li class="on" invoice-category="0">电子<i class="icon-a-o-arrow-bg"></i></li>
+          <li class="vat" invoice-category="1">增值税专用<i class="icon-a-o-arrow-bg"></i></li>
+        </ul>
+        <div class="invoice_tab_con">
+          <div class="tab_con inv_type">
+            <p class="invoice_msg"><span class="p_txt">(抬头类型)</span> <select name="invoice_id" class="invoice_mold_type"
+                                                                             onchange="wbiao.confirm.selInvType(this);">
+              <option value="1">个人</option>
+              <option value="2">企业</option>
+            </select></p>
+            <div class="personal_invoice"><p class="invoice_msg"><span class="p_txt">(抬头信息)</span> <input type="text"
+                                                                                                          class="p_msg inv_name"
+                                                                                                          placeholder="姓名">
+              <em class="error_tips h error_tips_class">请填写姓名</em></p></div>
+            <div class="company_invoice h"><p class="invoice_msg"><span class="p_txt">(抬头信息)</span> <input type="text"
+                                                                                                           class="p_msg inv_company"
+                                                                                                           placeholder="企业名称，必填">
+              <em class="error_tips h error_tips_class">请填写企业名称</em></p>
+              <p class="invoice_msg"><span class="p_txt">(企业税号)</span> <input type="text" class="p_msg inv_tax_code"
+                                                                              placeholder="必填"> <em
+                      class="error_tips h error_tips_class">请填写企业税号</em></p></div>
+          </div>
+          <div class="tab_con tex_type h"><p class="invoice_msg"><span class="p_txt">(企业名称)</span> <input type="text"
+                                                                                                          class="p_msg vat_company"
+                                                                                                          placeholder="必填">
+            <em class="error_tips h error_tips_class">请填写企业名称</em></p>
+            <p class="invoice_msg"><span class="p_txt">(纳税人识别码)</span> <input type="text" class="p_msg vat_identifier"
+                                                                              placeholder="必填"> <em
+                    class="error_tips h error_tips_class">请填写纳税人识别码</em></p>
+            <p class="invoice_msg"><span class="p_txt">(注册地址)</span> <input type="text" class="p_msg vat_address"
+                                                                            placeholder="必填"> <em
+                    class="error_tips h error_tips_class">请填写注册地址</em></p>
+            <p class="invoice_msg"><span class="p_txt">(注册电话)</span> <input type="text" class="p_msg vat_phone"
+                                                                            placeholder="必填"> <em
+                    class="error_tips h error_tips_class">请填写注册电话</em></p>
+            <p class="invoice_msg"><span class="p_txt">(开户银行)</span> <input type="text" class="p_msg vat_bank"
+                                                                            placeholder="必填"> <em
+                    class="error_tips h error_tips_class">请填写开户银行</em></p>
+            <p class="invoice_msg"><span class="p_txt">(银行账号)</span> <input type="text" class="p_msg vat_bank_num"
+                                                                            placeholder="必填"> <em
+                    class="error_tips h error_tips_class">请填写银行账号</em></p>
+            <div class="increase_entrust"><p class="entrust_title">(授权委托书)</p>
+              <div class="entrust_content clearfix">
+                <div class="entrust_img fl">
+                  <div class="tag"><span class="icon-a-o-add ico"></span> <span class="text">上传照片</span></div>
+                  <div class="input js_input"><a id="selectfiles" class="browse_button" href="javascript:void(0);"></a>
+                  </div>
+                  <div class="speed" id="console"></div>
+                  <div class="uploadImg" id="authorizationImageUrl"></div>
+                  <div class="delete icon-a-o-close04 h"></div>
+                </div>
+                <p class="entrust_p">1.POS刷卡、在线支付中使用个人卡支付的客户，需提供公司委托书。</p>
+                <p class="entrust_p">2.如您需要委托书，请先下载模板，按照模板内容填写，并加盖公章，详情请咨询客服。</p> <a
+                      href="https://image2.wbiao.co/others/invoice/%E6%8E%88%E6%9D%83%E5%A7%94%E6%89%98%E4%B9%A6%20(%E4%B8%87%E8%A1%A8).docx"
+                      class="entrust_text fl">点击下载委托书模版</a></div>
+            </div>
+            <div class="increase_entrust clearfix">
+              <div class="entrust_content fl"><p class="entrust_title">(营业执照)</p>
+                <div class="entrust_img fl">
+                  <div class="tag"><span class="icon-a-o-add ico"></span> <span class="text">上传照片</span></div>
+                  <div class="input js_input"><a id="selectfiles2" class="browse_button" href="javascript:void(0);"></a>
+                  </div>
+                  <div class="speed" id="console"></div>
+                  <div class="uploadImg" id="licenseImageUrl"></div>
+                  <div class="delete icon-a-o-close04 h"></div>
+                </div>
+              </div>
+              <div class="entrust_content fl">
+                <div class="entrust_title">(一般纳税人证书)</div>
+                <div class="entrust_img fl">
+                  <div class="tag"><span class="icon-a-o-add ico"></span> <span class="text">上传照片</span></div>
+                  <div class="input js_input"><a id="selectfiles3" class="browse_button" href="javascript:void(0);"></a>
+                  </div>
+                  <div class="speed" id="console"></div>
+                  <div class="uploadImg" id="certificateImageUrl"></div>
+                  <div class="delete icon-a-o-close04 h"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="invoice_rule"><p class="p1">(发票须知)</p>
+          <p>1.发票金额不含青苗兑换、优惠券和现金券部分；</p>
+          <p> 2.电子发票： <span>a).电子发票是税局认可的有效凭证,其法律效力、基本用途及使用规定同纸质发票,如需纸质票可自行下载打印。</span> <span>b).电子发票会在商品签收后开具。</span>
+          </p>
+          <p>3.增值税专用发票： <span>a).首次开具增值税专用发票的顾客,请填写开具增值税专用发票所需信息(也可以下单时直接填写增票信息),具体操作路径：我的万表-账户中心-发票管理-增票资质。</span>
+            <span>b).填写完毕后，为等待审核状态。</span></p></div>
+      </div></script>
+<!--    抵用设置-->
+    <script id="W_offset_bond" type="text/x-handlebars-template">
+      <div class="W_bond_content">
+        <div id="coupon_list">
+          <div class="bond_box cash_bond"><p class="bond_tit">现金券：<a href="javascript:void(0);">兑换券号</a></p>
+            <p class="no_bond">暂无可用</p></div>
+          <div class="bond_box yh_bond"><p class="bond_tit">优惠券：<a href="javascript:void(0);">兑换券号</a></p>
+            <p class="no_bond">暂无可用</p></div>
+          <div class="bond_box gift_bond"><p class="bond_tit">礼金券：</p>
+            <p class="no_bond">暂无可用</p></div>
+        </div>
+        <div class="bond_box jf_bond"><p class="bond_tit">青苗：</p>
+          <p class="unuse_jf"><i class="icon-a-o-mark"><span class="unuse_tips">1.满1000青苗可抵现<br> 2.100青苗抵扣1元，青苗支付不得超过每笔订单结算金额的5%，最高可抵5万元<br> 3.可与满减、优惠券等所有优惠叠加，在最终支付金额上面抵扣<br> 4.发生退货退款时，所使用的青苗退回原账户<br></span></i>
+          </p></div>
+      </div></script>
+    <script id="W_exchange" type="text/x-handlebars-template">
+      <div class="W_exchange_num">
+        <p class="exchange_code">
+          <span class="bond_tit">(券号)</span>
+          <input type="text" id="exchange_code" placeholder="请输入兑换码">
+          <i class="icon-a-o-delete h"></i> <em class="error_tips h">请输入正确的券号</em>
+        </p>
+      </div>
+    </script>
+    <script id="W_presale_rule" type="text/x-handlebars-template">
+      <div class="W_presale_rule"><p class="rule_txt">
+        1.客户下单时，须提前咨询该款式的到货周期,万表客服通知客户需要等待的时间以。若可接受，则可支付预售订金。订金金额为预售价至少的30%的预付款作为订金(可分期)，支付成功后，则订单正式进入“预售”状态。</p>
+        <p class="rule_txt">2.接受预售订单后，万表商品部同事将在5个工作日内通知相关的跟单客服，告知是否有货可供。若无货，则尽快安排退款。</p>
+        <p class="rule_txt">
+          3.对于能正常供货的商品，无论是万表网计划采购的，还是私人定制的商品，一律不退订金。如因特殊理由换款,只允许更换同品牌、同等价格或高于原订单总金额的对于能正常供货的商品，无论是万表网计划采购的，还是私人定制的商品，一律不退订金。</p>
+      </div>
+    </script>
+    <script id="W_gifts_items" type="text/x-handlebars-template">
+      <div class="gifts_lines"><span class="tag">赠品</span><span></span> <span class="fr"></span>
+      </div>
+    </script>
