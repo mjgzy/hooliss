@@ -2,9 +2,9 @@ import { createStore } from 'vuex'
 import {service} from '../network/request'
 export default createStore({
   state: {
-    status: '',
+    status: 'logout',
     token: localStorage.getItem('token') || '',
-    user: {}
+    user: {username:'',password:''}
   },
   mutations: {
     auth_request(state) {
@@ -30,7 +30,7 @@ export default createStore({
         commit('auth_request')
         // 向后端发送请求，验证用户名密码是否正确，请求成功接收后端返回的token值，利用commit修改store的state属性，并将token存放在localStorage中
         service({
-          'url':'',
+          'url':'/auth/login',
           'method':'post',
           'data':{user:user}
         }).then(resp => {

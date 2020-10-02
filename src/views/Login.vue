@@ -12,7 +12,10 @@
       </p>
       <div class="container formdiv">
         <div class="form-group">
-          <span class="STYLE3"><a href="/user/forRegister.xf">注册新用户</a></span>
+          <span class="STYLE3">
+<!--            <a href="/user/forRegister.xf"></a>-->
+            <router-link to="/register" >注册新用户</router-link>
+          </span>
         </div>
         <div class="form-group">
 
@@ -45,8 +48,6 @@
         </p>
       </div>
     </form>
-
-
     <form id="form2" class="panel panel-default bg-danger container-fluid col-md-offset-8 form-horizontal loginform" name="form2" method="post" action="/user/doLogin2.xf">
       <p class="login_tab" id="loginTab2"> <span class="on" title="userLogin" id="userLogin2">会员登录</span>
         <em>|</em>
@@ -80,32 +81,26 @@
           <a href="javascript:void(0);" class="social_login" data-phone="true">社交登录</a>
         </p>
       </div>
-
-
     </form>
-
   </div>
   <!-- 导入底部 -->
   <h-footer></h-footer>
-  <script type="text/javascript" src="/js/login.js"></script>
-  <script type="text/javascript" src="/Script/car.js"></script>
+<!--  <script type="text/javascript" src="/js/login.js"></script>-->
+<!--  <script type="text/javascript" src="/Script/car.js"></script>-->
   </div>
 </template>
 
 <script>
   import HHeader from '../components/HHeader'
-  import HFooter from '../components/HFooter'
   export default {
     name: "Login",
     components:{
-      HHeader:HFooter,
-      HFooter:HFooter
+      HHeader:HHeader,
     }
   }
 </script>
 
 <style scoped>
-  <!--
   .STYLE1 {
     font-size: large
   }
@@ -114,10 +109,9 @@
     font-size: medium;
     color: #CC0000;
   }
-  .section{
-    background-image: url(/Images/cb19871ecee52e988f8abbf71c5ee36.png);
-    background-repeat:no-repeat;
-    height: 500px;
-  }
-  -->
+  /*.section{*/
+  /*  background-image: url(/Images/cb19871ecee52e988f8abbf71c5ee36.png);*/
+  /*  background-repeat:no-repeat;*/
+  /*  height: 500px;*/
+  /*}*/
 </style>

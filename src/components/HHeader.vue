@@ -11,10 +11,15 @@
 				<input type="hidden" id="ParentPath" value="">
 			</span>
           <span class="tLnk1">
-				<span th:if="${session.Joy_User!=null}" th:name="${session.Joy_User.u_id}" id="loginInfo">[[${session.Joy_User.u_name}]],欢迎你 &nbsp;&nbsp; &nbsp;</span>
-	            <a th:if="${session.Joy_User!=null}" href="/user/logout.xf" class="f12">退出</a>
-				<a th:if="${session.Joy_User==null}" href="/user/login.xf" class="f12"> 请登录 </a>
+            <div v-if="this.$store.state.status!=='logout'">
+              <span  id="loginInfo">{{$store.state.user.username}},欢迎你</span>
+	            <a  @click="logout" class="f12">退出</a>
+            </div>
+			 <div v-if="this.$store.state.status==='logout'">
+                <router-link  to="/login" class="f12"> 请登录 </router-link>
 				<a href="/user/forRegister.xf" class="f12">注册</a>
+            </div>
+
 			</span>
         </div>
       </div>
@@ -125,7 +130,10 @@
       });
     },
     methods: {
+      //注销用户事件
+      logout:{
 
+      }
     }
   }
 

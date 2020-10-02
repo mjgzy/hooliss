@@ -11,18 +11,39 @@ export function service(config) {
   instance.interceptors.request.use(config=>{
     console.log('请求拦截');
     console.log(config);
+    config.headers['Authorization'] = sessionStorage.authorization;
     return config;
     },err=>{
       console.log(err);
     console.log('请求拦截异常');
     return err;
   })
-  instance.interceptors.response.use(a=>{
-      console.log('成功了');
-      return a;
+  instance.interceptors.response.use(
+      response=>{
+    const headers = response.headers;
+
+    if(headers != null && headers['content-type'] === 'multipart/form-data;charset=utf-8') {
+      return response.data
+    }
+    if (headers != null && headers['content-type'] === 'application/json;charset=utf-8') {
+      if (!response.data.appData.success) {
+        if (response.data.appData.errCode === 1001 || response.data.appData.errCode === 1002) {
+          sessionStorage.clear();
+          setTimeout(() => window.location.href = '#/login',2000)
+        }
+        Vue.prototype.$Message.error(response.data.appData.tipMsg || response.data.appData.errMsg);
+        // return Promise.reject(response)
+      }
+    }
+    return Promise.resolve(response)
     },error => {
     console.log(error);
     console.log('失败了');
+    //跳转到登录页
+    let code = error.response.status;
+    if(code===401){
+      window.location.href = "/login";
+    }
     });
     //3.发送网络请求
     return instance(config);
