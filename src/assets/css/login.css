@@ -1,0 +1,479 @@
+@charset "utf-8";
+.login_tab {
+    overflow: hidden;
+    width: 269px;
+    margin: 0 auto;
+    padding: 40px 0 20px;
+}
+.login_tab span {
+    height: 26px;
+    line-height: 26px;
+    font-size: 20px;
+    color: grey;
+    float: left;
+    width: 134px;
+    text-align: center;
+    cursor: pointer;
+}
+.login_tab span.on {
+    color: #cc5252;
+}
+
+.login_tab em {
+    float: left;
+    background: #ddd;
+    height: 24px;
+    font-size: 0;
+    width: 1px;
+    margin-top: 1px;
+}
+.login_tab span.scan {
+    height: 26px;
+    line-height: 26px;
+    font-size: 20px;
+    color: grey;
+    float: left;
+    width: 134px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.pos{
+    margin-left: 120px;
+    margin-bottom: 20px;
+    font-size: 16px;
+
+}
+.STYLE3 a{
+    color: #3b3a3a;
+    margin-left: 25px;
+}
+#wjmm{
+    color: #3b3a3a;
+    margin-left: 15px;
+}
+.pos a{
+    color: #3b3a3a;
+}
+.pos1 a{
+    color: #3b3a3a;
+}
+#submit{
+    background-color: #cc5252;
+    color: #fff;
+    height: 44px;
+    font-size: 18px;
+}
+.pos1{
+    margin-left: 80px;
+    margin-top: 25px;
+    font-size: 16px;
+}
+#get_code{
+    color: #3b3a3a;
+}
+ .login {
+    background: #cc5252;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 12px;
+    border: none;
+
+    cursor: pointer;
+     width: 100%;
+     display: block;
+     box-sizing: border-box;
+     height: 44px;
+     margin-top: 12px;
+     line-height: 44px;
+     border: 1px solid #ddd;
+     padding-left: 10px;
+}
+.container p {
+    overflow: hidden;
+}
+.captcha_wrap input {
+    width: 200px;
+    margin-right: 4px;
+    font-size: 100%;
+}
+.container p input {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    height: 44px;
+    margin-top: 12px;
+    line-height: 44px;
+    border: 1px solid #ddd;
+    padding-left: 10px;
+}
+.form-phone{
+    width: 90%;
+    display: block;
+    box-sizing: border-box;
+    height: 44px;
+    margin-top: -28px;
+    line-height: 44px;
+    border: 1px solid #ddd;
+    padding-left: 10px;
+    margin-left: 15px;
+}
+#form1 .container:nth-of-type(2){
+    margin-top: -22px;
+}
+.captcha_wrap span{
+    margin-top: 5px;
+}
+.input-group{
+    width: 268px;
+    margin-top: 10px;
+    height: 48px;
+    line-height: 44px;
+    padding-left: 10px;
+    margin-left: 15px;
+}
+.form-control{
+    height: 44px;
+}
+
+#form1,#form2{
+    height: 460px;
+    width: 380px;
+    position: relative;
+    top: 20px;
+}
+.formdiv{
+    width: 90%;
+    margin: 40px auto;
+
+}
+#form1 p{
+    margin-bottom: 10px;
+
+}
+#get_code{
+    display: block;
+    height: 30px;
+    line-height: 40px;
+    font-size: 13px;
+}
+.section{
+    background: url("./images/loginBackground.jpg") no-repeat;
+    background-size:100% 100%;
+    height:500px;
+}
+/********************************************分割线********************************************/
+* {
+    font-family: 'Microsoft Yahei',' PingFang SC','Lucida Grande',Arial,'\5b8b\4f53';
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+.W_login_mark {
+    width: 380px;
+    height: 460px;
+    position: absolute;
+    background: #fff;
+    right: 170px;
+    top: 155px;
+}
+.W_login_mark .login_tab {
+    overflow: hidden;
+    width: 269px;
+    margin: 0 auto;
+    padding: 40px 0 20px;
+}
+.W_login_mark .login_tab span {
+    height: 26px;
+    line-height: 26px;
+    font-size: 20px;
+    color: grey;
+    float: left;
+    width: 134px;
+    text-align: center;
+    cursor: pointer;
+}
+.W_login_mark .login_tab em {
+    float: left;
+    background: #ddd;
+    height: 24px;
+    font-size: 0;
+    width: 1px;
+    margin-top: 1px;
+}
+.W_login_mark .login_tab span.on {
+    color: #cc5252;
+}
+.W_login_mark .login_tab span {
+    height: 26px;
+    line-height: 26px;
+    font-size: 20px;
+    color: grey;
+    float: left;
+    width: 134px;
+    text-align: center;
+    cursor: pointer;
+}
+.h {
+    display: none!important;
+}
+.W_login_mark .member_login {
+    width: 300px;
+    margin: 0 auto;
+}
+.W_login_mark .member_login p {
+    overflow: hidden;
+}
+.W_login_mark .member_login .login, .W_login_mark .member_login p input {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    height: 44px;
+    margin-top: 12px;
+    line-height: 44px;
+    border: 1px solid #ddd;
+    padding-left: 10px;
+}
+.W_login_mark .member_login i {
+    font-size: 14px;
+    color: #cc5252;
+    line-height: 19px;
+    margin-top: 8px;
+    display: block;
+    padding-left: 10px;
+}
+.W_login_mark .member_login .identifying_code {
+    position: relative;
+}
+.W_login_mark .member_login .identifying_code img {
+    position: absolute;
+    right: 1px;
+    top: 13px;
+    width: 98px;
+    height: 38px;
+}
+.W_login_mark .member_login .isLogin {
+    padding-top: 10px;
+}
+.W_login_mark .member_login .isLogin em {
+    margin: 0 auto;
+    display: block;
+    width: 24px;
+}
+.icon-a-o-load {
+    display: block;
+    /*background-image: url(/public/sprites/a/a.png?152023319);*/
+    background-position: -84px -462px;
+    background-size: 589px;
+    width: 30px;
+    height: 30px;
+}
+.W_login_mark .member_login p a {
+    color: #999;
+    font-size: 14px;
+}
+.W_login_mark .member_login p.pos {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    padding-top: 11px;
+}
+.W_login_mark .member_login p.pos em {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 22px;
+    float: left;
+    width: 25px;
+    text-align: center;
+}
+.W_login_mark .member_login .pos_btm {
+    position: absolute;
+    bottom: 50px;
+    height: 30px;
+    right: 10px;
+    background: #6b6b6b;
+    box-shadow: 0 4px 6px 2px rgba(153,153,153,.5);
+    border-radius: 5px;
+    line-height: 30px;
+    font-size: 12px;
+    color: #f5f5f5;
+    width: 322px;
+    text-align: center;
+}
+.W_login_mark .member_login .pos_btm strong {
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.W_login_mark .member_login .captcha_wrap input {
+    width: 200px;
+    margin-right: 4px;
+}
+.W_login_mark .member_login .captcha_wrap .img-wrap {
+    display: inline-block;
+    width: 94px;
+    height: 42px;
+    border: 1px solid #ddd;
+    margin-top: 12px;
+}
+.W_login_mark .member_login .captcha_wrap img {
+    width: 100%;
+    height: 100%;
+}
+.W_login_mark .member_login .message_code input {
+    width: 200px;
+    margin-right: 4px;
+    float: left;
+}
+.W_login_mark .member_login .message_code a {
+    float: left;
+    width: 96px;
+    height: 44px;
+    background: #b1b1b1;
+    line-height: 44px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    margin-top: 12px;
+}
+.W_login_mark .member_login .isLogin {
+    padding-top: 10px;
+}
+.W_login_mark .code_login {
+    position: relative;
+}
+.W_login_mark .scan_code_login {
+    margin-top: 20px;
+}
+.W_login_mark .scan_code_login .qr_code {
+    width: 340px;
+    height: 183px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+.W_login_mark .scan_code_login .qr_code .qr_code_img {
+    position: absolute;
+    left: 50%;
+    margin-left: -91.5px;
+    z-index: 10;
+    width: 183px;
+    height: 183px;
+}
+.W_login_mark .scan_code_login .qr_code .teaching_chart {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+}
+.qr_code .lose_efficacy, .qr_code .lose_efficacy .content, .qr_code .lose_efficacy .mark {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+.qr_code .lose_efficacy .mark {
+    background: #fff;
+    opacity: .95;
+}
+
+.qr_code .lose_efficacy .content {
+    z-index: 10;
+}
+.qr_code .lose_efficacy .content p {
+    margin-top: 59px;
+    font-size: 16px;
+    color: #333;
+    line-height: 21px;
+    text-align: center;
+}
+.W_login_mark .scan_code_login p {
+    font-size: 16px;
+    color: #666;
+    line-height: 21px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+.W_login_mark .scan_code_login em {
+    font-size: 16px;
+    color: #cc5252;
+    cursor: pointer;
+}
+.W_login_mark .scan_code_login i {
+    font-size: 16px;
+    color: #999;
+}
+.W_login_mark .scan_code_login a {
+    width: 160px;
+    height: 40px;
+    margin: 27px auto 0;
+    display: block;
+    border: 1px solid #999;
+    border-radius: 100px;
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    line-height: 40px;
+}
+.W_login_mark .download {
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 11;
+}
+.W_login_mark .download .qr {
+    width: 260px;
+    height: 260px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 6px 0 rgba(199,199,199,.5);
+    border-radius: 20px;
+    position: relative;
+}
+.W_login_mark .download .qr .qr_codes {
+    margin: 14.3px;
+}
+.W_login_mark .download a {
+    width: 160px;
+    height: 40px;
+    border: 1px solid #999;
+    border-radius: 100px;
+    display: block;
+    margin: 10px auto 0;
+    font-size: 16px;
+    color: #666;
+    line-height: 40px;
+    text-align: center;
+}
+.W_login_mark .scan_success {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -86px;
+    background: #fff;
+    z-index: 11;
+}
+.W_login_mark .scan_success i {
+    margin: 140px auto 0;
+}
+.icon-a-icon_scan_success {
+    display: block;
+    background-image: url(./images/20200905190001.png);
+    background-position: -92px -112px;
+    background-size: 589px;
+    width: 80px;
+    height: 80px;
+}
+.W_login_mark .scan_success p {
+    font-size: 14px;
+    color: #666;
+    line-height: 14px;
+    padding-top: 12px;
+    text-align: center;
+}

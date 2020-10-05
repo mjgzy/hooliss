@@ -11,7 +11,10 @@ export function service(config) {
   instance.interceptors.request.use(config=>{
     console.log('请求拦截');
     console.log(config);
-    config.headers['Authorization'] = sessionStorage.authorization;
+    const token = sessionStorage.authorization;
+    if(token!==undefined&&token!==''){
+      config.headers['Authorization'] = token;
+    }
     return config;
     },err=>{
       console.log(err);
@@ -21,19 +24,16 @@ export function service(config) {
   instance.interceptors.response.use(
       response=>{
     const headers = response.headers;
-
-    if(headers != null && headers['content-type'] === 'multipart/form-data;charset=utf-8') {
+    if(headers != null && headers['content-type'] === 'multipart/form-data;charset=UTF-8') {
       return response.data
     }
-    if (headers != null && headers['content-type'] === 'application/json;charset=utf-8') {
-      if (!response.data.appData.success) {
-        if (response.data.appData.errCode === 1001 || response.data.appData.errCode === 1002) {
+    if (headers != null && headers['content-type'] === 'application/json;charset=UTF-8') {
+        if (response.data.code === 401 || response.data.code === 402) {
           sessionStorage.clear();
           setTimeout(() => window.location.href = '#/login',2000)
         }
-        Vue.prototype.$Message.error(response.data.appData.tipMsg || response.data.appData.errMsg);
+        // Vue.prototype.$Message.error(response.data.appData.tipMsg || response.data.appData.errMsg);
         // return Promise.reject(response)
-      }
     }
     return Promise.resolve(response)
     },error => {

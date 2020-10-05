@@ -3,17 +3,18 @@ import {service} from '../network/request'
 export default createStore({
   state: {
     status: 'logout',
-    token: localStorage.getItem('token') || '',
+    token: localStorage.getItem('authorization') || '',
     user: {username:'',password:''}
   },
   mutations: {
     auth_request(state) {
+      console.log('auth_request');
       state.status = 'loading';
     },
-    auth_success(state, token, user) {
+    auth_success(state, payload) {
       state.status = 'success';
-      state.token = token;
-      state.user = user;
+      state.token = payload.token;
+      state.user = payload.user;
     },
     auth_error(state) {
       state.status = 'error';
@@ -27,24 +28,28 @@ export default createStore({
     //登录方法
     Login({commit}, user) {
       return new Promise((resolve, reject) => {
-        commit('auth_request')
+        commit('auth_request');
         // 向后端发送请求，验证用户名密码是否正确，请求成功接收后端返回的token值，利用commit修改store的state属性，并将token存放在localStorage中
+        const params = new URLSearchParams();
+        params.append('username',user.username);
+        params.append('password',user.password);
         service({
-          'url':'/auth/login',
-          'method':'post',
-          'data':{user:user}
+          url:'/auth/login',
+          method:'post',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          data:params
         }).then(resp => {
-          const token = resp.data.token
-          const user = resp.data.user
-          localStorage.setItem('token', token)
-          // 每次请求接口时，需要在headers添加对应的Token验证
-          service.defaults.headers.common['Authorization'] = token
+          console.log('resp>>>',resp);
+          const token = resp.headers.authorization
+          const user = resp.data.data
+          debugger;
+          localStorage.setItem('authorization', token)
           // 更新token
-          commit('auth_success', token, user)
+          commit('auth_success', {token, user})
           resolve(resp)
         }).catch(err => {
             commit('auth_error')
-            localStorage.removeItem('token')
+            localStorage.removeItem('authorization')
             reject(err)
           })
       })
