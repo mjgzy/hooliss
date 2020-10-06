@@ -11,7 +11,7 @@ export function service(config) {
   instance.interceptors.request.use(config=>{
     console.log('请求拦截');
     console.log(config);
-    const token = sessionStorage.authorization;
+    const token = sessionStorage.authentication;
     if(token!==undefined&&token!==''){
       config.headers['Authorization'] = token;
     }

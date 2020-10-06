@@ -12,7 +12,7 @@
 			</span>
           <span class="tLnk1">
             <div v-if="this.$store.state.status!=='logout'">
-              <span  id="loginInfo">{{$store.state.user.username}},欢迎你</span>
+              <span  id="loginInfo">{{$store.state.loginUser.username}},欢迎你</span>
 	            <a  @click="logout" class="f12">退出</a>
             </div>
 			 <div v-if="this.$store.state.status==='logout'">
@@ -118,12 +118,14 @@
       }
     },
     created() {
+      const loginUser = this.$store.state.loginUser;
+      const token = this.$store.state.token;
+      if(loginUser!==null&&loginUser!==''){
+        this.$store.dispatch('RefreshLoginStatus',{user:loginUser,token});
+      }
       service({
         'url': 'brand-provider/doBrandById.xf'
       }).then(res => {
-        console.log("watchTypes>>>", res);
-        console.log("watchTypes>>>", res.data);
-        console.log("watchTypes>>>", res.data.data);
         this.watchTypes = res.data.data;
       }).catch(err => {
         console.log(err);
@@ -131,8 +133,16 @@
     },
     methods: {
       //注销用户事件
-      logout:{
-
+      logout(){
+        this.$store.dispatch('LogOut',localStorage.getItem('loginUser'))
+                .then(res=>{
+                  if(res.status===200){
+                    this.$store.push('/index');
+                  }
+                })
+                .catch(err=>{
+                  console.log(err);
+                });
       }
     }
   }

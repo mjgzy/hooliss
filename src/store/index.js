@@ -1,20 +1,24 @@
 import { createStore } from 'vuex'
 import {service} from '../network/request'
 export default createStore({
+
   state: {
-    status: 'logout',
-    token: localStorage.getItem('authorization') || '',
-    user: {username:'',password:''}
+    status : 'logout',
+    token : sessionStorage.getItem('authentication') || '',
+    user : {username:'',password:''},
+    loginUser : JSON.parse(sessionStorage.getItem('loginUser')) || ''
   },
   mutations: {
     auth_request(state) {
-      console.log('auth_request');
       state.status = 'loading';
     },
     auth_success(state, payload) {
       state.status = 'success';
       state.token = payload.token;
       state.user = payload.user;
+      state.loginUser = payload.user;
+      sessionStorage.setItem('authentication',state.token);
+      sessionStorage.setItem('loginUser',JSON.stringify(state.user));
     },
     auth_error(state) {
       state.status = 'error';
@@ -25,6 +29,9 @@ export default createStore({
     },
   },
   actions: {
+    RefreshLoginStatus({commit},payload){
+        commit('auth_success',payload);
+    },
     //登录方法
     Login({commit}, user) {
       return new Promise((resolve, reject) => {
@@ -42,33 +49,38 @@ export default createStore({
           console.log('resp>>>',resp);
           const token = resp.headers.authorization
           const user = resp.data.data
-          debugger;
-          localStorage.setItem('authorization', token)
           // 更新token
-          commit('auth_success', {token, user})
+          commit('auth_success',  {user,token})
           resolve(resp)
         }).catch(err => {
             commit('auth_error')
-            localStorage.removeItem('authorization')
+            sessionStorage.removeItem('loginUser')
             reject(err)
           })
       })
     },
     //登出方法
-    LogOut({ commit, state }) {
-      return new Promise((resolve, reject) => {
+    LogOut({ commit, state },user) {
+      return new Promise((resolve,reject) => {
+        const params = new URLSearchParams();
+        params.append('username',user.username);
+        params.append('password',user.password);
+        debugger;
         service({
-          url:''
+          url : '/auth/logout',
+          method : 'post',
+          data : params
         }).then(response => {
-            // removeIsLogin()
-            localStorage.removeItem('loginUsername');
-            // 移除之前在axios头部设置的token,现在将无法执行需要token的事务
-            delete service.defaults.headers.common['Authorization'];
-            resolve(response)
-          })
-          .catch(error => {
-            reject(error)
-          })
+          // removeIsLogin()
+          sessionStorage.removeItem('loginUser');
+          // 移除之前在axios头部设置的token,现在将无法执行需要token的事务
+          // delete service.defaults.headers.common['Authorization'];
+          console.log(response);
+          resolve(response);
+        }).catch(error => {
+          console.log(error);
+          reject(error);
+        })
       })
     }
   },

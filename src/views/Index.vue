@@ -284,10 +284,9 @@
       HHeader
     },
     created() {
-        service({
+      service({
           url:"index-provider/doIndex.xf"
         }).then(res=>{
-          console.log(res);
           this.watchs.grade=res.data.data.grade;
           this.watchs.products=res.data.data.products;
           this.watchs.gradeList=res.data.data.gradeList;
@@ -298,7 +297,6 @@
     },
     methods:{
       liClick(watchId){
-        console.log('dwadwa');
         const {href}=this.$router.resolve({name:'watchDetails',query:{watchId}});
         window.open(href, '_blank')
       }
