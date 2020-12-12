@@ -23,8 +23,8 @@
                         </p>
                         <p class="identifying_code identifying_code_name h">
                             <input type="text" maxlength="4" placeholder="图形验证码" id="identifys">
-                            <img src="/pub/captcha?w=98&amp;h=38&amp;85103620"
-                                 onclick="this.src='/pub/captcha?w=98&amp;h=38&amp;'+Math.random();" alt="验证码"
+                            <img id="captcha"
+                                  alt="验证码"
                                  title="看不清？点击更换另一个验证码。"><i></i>
                         </p>
                         <input class="login" id="user_login" type="submit" value="立即登录">
@@ -53,9 +53,8 @@
                         <p class="captcha_wrap">
                             <input type="text" value="" id="message_need_captcha_code" placeholder="请输入图形验证码" maxlength="4" class="fl">
                             <span  class="img-wrap fl">
-                            <img src="/pub/captcha2?w=94&amp;h=42&amp;15564584"
-                             onclick="this.src='/pub/captcha2?w=98&amp;h=38&amp;'+Math.random();"
-                             alt="验证码" title="看不清？点击更换另一个验证码。"></span>
+                                <img @click="getCaptcha('captcha2')" id="captcha2" alt="验证码" title="看不清？点击更换另一个验证码。">
+                            </span>
                         </p>
                         <p class="message_code"><input type="text" name="messageVerifyCode" placeholder="短信验证码"
                                                        maxlength="6" id="note_code">
@@ -114,6 +113,7 @@
 
 <script>
     import HHeader from '../components/HHeader'
+    import {service} from '../network/request'
     export default {
         name: "Login",
         data(){
@@ -129,7 +129,27 @@
         components: {
             HHeader: HHeader,
         },
+        created() {
+            this.getCaptcha('captcha2');
+        },
         methods:{
+            getCaptcha(id){
+                service({
+                    url:'/user-provider/verify',
+                    responseType: 'arraybuffer'
+                }).then(res=>{
+                    console.log('验证码请求成功>>>>>');
+                    let bytes = new Uint8Array(res.data);
+                    let data = "";
+                    let len = bytes.byteLength;
+                    for (let i = 0; i < len; i++) {
+                        data += String.fromCharCode(bytes[i]);
+                    }
+                    document.getElementById(id).src = "data:image/png;base64," + window.btoa(data);
+                }).catch(e=>{
+                    console.log('获取图形验证码失败>>>>>'+e);
+                });
+            },
             isUserOrClick(){
                 this.isUser=!this.isUser;
                 this.isScan=!this.isScan;
